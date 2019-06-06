@@ -161,7 +161,7 @@ func main() {
 	}
 	fmt.Println()
 
-	started := time.Now()
+	started := time.Now().Add(time.Duration(-90) * time.Minute)
 
 	args, err := shellquote.Split(config.Arguments)
 	if err != nil {
