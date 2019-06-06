@@ -223,6 +223,7 @@ func main() {
 					log.Warnf("Failed to export test results for test addon: cannot get export directory for artifact (%s): %s", err)
 					continue
 				}
+				log.Printf("  Exporting artifact to test addon[ path: %s, name: %s, uniqueDir: %s ]", artifact.Path, artifact.Name, uniqueDir)
 
 				if err := testaddon.ExportArtifact(artifact.Path, baseDir, uniqueDir); err != nil {
 					log.Warnf("Failed to export test results for test addon: %s", err)
