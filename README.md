@@ -1,6 +1,6 @@
-# Android Unit Test
+# JUnit Results Exporter for Android
 
-Runs your Android project's unit tests.
+Exports your JUnit tests results so they can be picked up by Test addon.
 
 ## How to use this Step
 
