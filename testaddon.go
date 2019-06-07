@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"strings"
-	"unicode"
 
 	"github.com/bitrise-io/go-utils/log"
 )
@@ -19,7 +17,7 @@ func getUniqueDir(path string) (string, error) {
 	
 	flavor := parts[len(parts) - 2]
 
-	module := parts[2]
+	module := parts[3]
 	ret := module + "_" + flavor
 
 	log.Debugf("getUniqueDir(%s): (%s)", path, ret)
