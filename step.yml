@@ -1,16 +1,14 @@
-title: Android Unit Test
-summary: This step runs your Android project's unit tests.
-description: This step runs your Android project's unit tests.
-website: https://github.com/bitrise-steplib/bitrise-step-android-unit-test
-source_code_url: https://github.com/bitrise-steplib/bitrise-step-android-unit-test
-support_url: https://github.com/bitrise-steplib/bitrise-step-android-unit-test/issues
+title: JUnit Results Exporter for Android
+summary: This step exports your JUnit tests results so they can be picked up by Test addon.
+description: This step exports your JUnit tests results so they can be picked up by Test addon.
+website: https://github.com/zawadz88/bitrise-step-junit-results-exporter
+source_code_url: https://github.com/zawadz88/bitrise-step-junit-results-exporter
+support_url: https://github.com/zawadz88/bitrise-step-junit-results-exporter/issues
 host_os_tags:
-  - osx-10.10
   - ubuntu-16.04
 
 project_type_tags:
   - android
-  - react-native
 
 type_tags:
   - test
@@ -21,7 +19,7 @@ is_skippable: false
 
 toolkit:
   go:
-    package_name: github.com/bitrise-steplib/bitrise-step-android-unit-test
+    package_name: github.com/zawadz88/bitrise-step-junit-results-exporter
 
 inputs:
   - project_location: $BITRISE_SOURCE_DIR
@@ -30,63 +28,17 @@ inputs:
       summary: "The root directory of your android project, for example, where your root build gradle file exists (also gradlew, settings.gradle, etc...)"
       description: "The root directory of your android project, for example, where your root build gradle file exists (also gradlew, settings.gradle, etc...)"
       is_required: true
-  - module: ""
-    opts:
-      title: Module
-      summary: |
-        Set the module that you want to test. To see your available modules, please open your project in Android Studio and go to [Project Structure] and see the list on the left.
-      description: |
-        Set the module that you want to test. To see your available modules, please open your project in Android Studio and go to [Project Structure] and see the list on the left.
-      is_required: false
-  - variant: ""
-    opts:
-      title: Variant
-      summary: |
-        Set the variant that you want to test. To see your available variants, please open your project in Android Studio and go to [Project Structure] -> variants section.
-      description: |
-        Set the variant that you want to test. To see your available variants, please open your project in Android Studio and go to [Project Structure] -> variants section.
-      is_required: false
-  - arguments:
+  - result_artifact_path_pattern: "*TEST*.xml"
     opts:
       category: Options
-      title: Additional Gradle Arguments 
-      summary: Extra arguments passed to the gradle task
-      description: Extra arguments passed to the gradle task
-      is_required: false
-  - report_path_pattern: "*build/reports"
+      title: JUnit report file pattern
+      summary: Will find JUnit report files with the given pattern.
+      description: Will find JUnit report files with the given pattern.
+      is_required: true
+  - test_folder_name: "androidTest-results"
     opts:
       category: Options
-      title: Report location pattern
-      summary: Will find the report dir with the given pattern.
-      description: Will find the report dir with the given pattern.
+      title: Test results folder name
+      summary: Will use it to determine the unique name for the test artifact.
+      description: Will use it to determine the unique name for the test artifact.
       is_required: true
-  - result_path_pattern: "*build/test-results"
-    opts:
-      category: Options
-      title: Test results location pattern
-      summary: Will find the test-results dir with the given pattern.
-      description: Will find test-results dir with the given pattern.
-      is_required: true
-  - cache_level: "only_deps"
-    opts:
-      category: Options
-      title: Set the level of cache
-      description: |-
-        `all` - will cache build-cache and dependencies
-        `only_deps` - will cache dependencies only
-        `none` - won't cache any of the above
-      is_required: true
-      value_options:
-      - "all"
-      - "only_deps"
-      - "none"
-  - is_debug: "false"
-    opts: 
-      category: Debug
-      title: "Enable Debug Mode"
-      summary: The step will print more verbose logs if enabled.
-      description: The step will print more verbose logs if enabled.
-      is_required: true
-      value_options:
-      - "false"
-      - "true"
