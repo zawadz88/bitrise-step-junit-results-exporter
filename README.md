@@ -1,6 +1,6 @@
-# JUnit Results Exporter for Android
+# JUnit Results Exporter for Android connected tests
 
-Exports your JUnit tests results so they can be picked up by Test addon.
+Exports your JUnit tests results from instrumentation tests so they can be picked up by Test addon.
 
 ## How to use this Step
 

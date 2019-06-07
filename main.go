@@ -14,7 +14,6 @@ import (
 // Configs ...
 type Configs struct {
 	ProjectLocation   			string `env:"project_location,dir"`
-	TestFolderName 				string `env:"test_folder_name"`
 	ResultArtifactPathPattern 	string `env:"result_artifact_path_pattern"`
 }
 
@@ -69,7 +68,7 @@ func main() {
 	} else {
 		if baseDir := os.Getenv("BITRISE_TEST_RESULT_DIR"); baseDir != "" {
 			for _, artifact := range resultXMLs {
-				uniqueDir, err := getUniqueDir(artifact.Path, config.TestFolderName)
+				uniqueDir, err := getUniqueDir(artifact.Path)
 				if err != nil {
 					log.Warnf("Failed to export test results for test addon: cannot get export directory for artifact (%s): %s", artifact.Name, err)
 					continue

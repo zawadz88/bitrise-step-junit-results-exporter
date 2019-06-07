@@ -35,10 +35,3 @@ inputs:
       summary: Will find JUnit report files with the given pattern.
       description: Will find JUnit report files with the given pattern.
       is_required: true
-  - test_folder_name: "androidTest-results"
-    opts:
-      category: Options
-      title: Test results folder name
-      summary: Will use it to determine the unique name for the test artifact.
-      description: Will use it to determine the unique name for the test artifact.
-      is_required: true
